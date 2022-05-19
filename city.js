@@ -13,7 +13,7 @@ function showAllCity(){
             <td>${city[i].population}</td>
             <td>${city[i].GDP}</td>
             <td>${city[i].description}</td>
-            <td>${city[i].country.name}</td>
+            <td>${city[i].country.nameCountry}</td>
             <td><button type="button" onclick="deleteCity(${city[i].id})">Delete</button></td>
             <td><button type="button" data-toggle="modal" data-target="#myModal" onclick="showEditForm(${city[i].id})">Edit</button>
             </td>
@@ -32,7 +32,7 @@ function showCountry(){
         success:function (country){
             let content="";
             for (let i=0; i<country.length; i++){
-                content+=`<option value="${country[i].id}">${country[i].name}</option>`
+                content+=`<option value="${country[i].id}">${country[i].nameCountry}</option>`
             }
             $("#country").html(content);
             $("#newCountry").html(content);
@@ -53,11 +53,11 @@ function createCity(){
 
     let cityForm = new FormData();
 
-    cityForm.append('name',name);
+    cityForm.append('nameCity',name);
     cityForm.append('image',image.prop('files')[0]);
     cityForm.append('acreage',acreage);
     cityForm.append('population',population);
-    cityForm.append('gdp',gdp);
+    cityForm.append('GDP',gdp);
     cityForm.append('description',description);
     cityForm.append('country',country);
 
@@ -79,27 +79,30 @@ function createCity(){
     event.preventDefault();
 }
 
-function updateBook(id){
+function updateCity(id){
 //lay du lieu
     let name = $(`#newNameCity`).val();
     let image = $(`#newImage`)
-    let price = $(`#newPrice`).val();
-    let author = $(`#newAuthor`).val();
-    let category = $(`#newCategory`).val();
-    let avatar = $(`#newAvatar`);
-    let bookForm = new FormData();
+    let acreage = $(`#newAcreage`).val();
+    let population = $(`#newPopulation`).val();
+    let gdp = $(`#newGdp`).val();
+    let description = $(`#newDescription`);
+    let country = $(`#newCountry`).val();
+    let cityForm = new FormData();
 
     //tao doi tuong
-    bookForm.append('name',name);
-    bookForm.append('price',price);
-    bookForm.append('author',author);
-    bookForm.append('category',category);
-    bookForm.append('avatar',avatar.prop('files')[0]);
-    if (avatar.prop('files')[0]===undefined){
+    cityForm.append('nameCity',name);
+    cityForm.append('image',image.prop('files')[0]);
+    cityForm.append('acreage',acreage);
+    cityForm.append('population',population);
+    cityForm.append('GDP',gdp);
+    cityForm.append('description',description);
+    cityForm.append('country',country);
+    if (image.prop('files')[0]===undefined){
         let file = new File([""],"filename.jpg")
-        bookForm.append('avatar',file);
+        image.append('image',file);
     }else {
-        bookForm.append('avatar',avatar.prop('files')[0]);
+        image.append('image',image.prop('files')[0]);
     }
 
 
@@ -110,39 +113,41 @@ function updateBook(id){
         processData: false,
         contentType: false,
         //du lieu gui len
-        data: bookForm,
+        data: cityForm,
         //ten API
-        url:`http://localhost:8080/books/${id}`,
+        url:`http://localhost:8080/city/${id}`,
         success:function (){
             alert("sua thanh cong");
-            showAllBook();
+            showAllCity();
         }
     })
-    //chan su kien mac dinh cua the de k load lai trang
 }
 
-function deleteBook(id){
+function deleteCity(id){
     $.ajax({
         type:"DELETE",
-        url:`http://localhost:8080/books/${id}`,
-        success:showAllBook
+        url:`http://localhost:8080/city/${id}`,
+        success:showAllCity
     })
 }
 function showEditForm(id){
     $.ajax({
         type:"GET",
-        url:`http://localhost:8080/books/${id}`,
-        success:function (book){
-            $(`#newName`).val(book.name)
-            $(`#newPrice`).val(book.price)
-            $(`#newAuthor`).val(book.author)
-            $(`#newCategory`).val(book.category.name)
-            let img = `<img src="${'http://localhost:8080/avatar/' + book.avatar}" width="100px">`
-            $(`#showAvatar`).html(img)
-            let update = `<button onclick="updateBook(${book.id})" data-bs-toggle="modal" data-bs-target="#myModal">Update</button>`
+        url:`http://localhost:8080/city/${id}`,
+        success:function (city){
+            $(`#newNameCity`).val(city.nameCity)
+            let img = `<img src="${'http://localhost:8080/image/' + city.image}" width="100px">`
+            $(`#newAcreage`).val(city.acreage)
+            $(`#newPopulation`).val(city.population)
+            $(`#newGdp`).val(city.gdp)
+            $(`#newDescription`).val(city.description)
+            $(`#newCountry`).val(city.country.name)
+
+            $(`#showImage`).html(img)
+            let update = `<button onclick="updateCity(${city.id})" data-bs-toggle="modal" data-bs-target="#myModal">Update</button>`
             $(`#update`).html(update)
         }
     })
-    // showCategory();
+    showCountry();
 }
-$(document).ready(showAllBook())
+// $(document).ready(showAllCity())
