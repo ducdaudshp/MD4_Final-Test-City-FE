@@ -11,7 +11,7 @@ function showAllCity(){
             <td><img src="${'http://localhost:8080/image/' + city[i].image}" width="100px"></td>
             <td>${city[i].acreage}</td>
             <td>${city[i].population}</td>
-            <td>${city[i].GDP}</td>
+            <td>${city[i].gdp}</td>
             <td>${city[i].description}</td>
             <td>${city[i].country.nameCountry}</td>
             <td><button type="button" onclick="deleteCity(${city[i].id})">Delete</button></td>
