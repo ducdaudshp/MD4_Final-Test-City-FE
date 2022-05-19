@@ -9,14 +9,11 @@ function showAllCity(){
             <th scope="row">${i+1}</th>
             <td>${city[i].nameCity}</td>
             <td><img src="${'http://localhost:8080/image/' + city[i].image}" width="100px"></td>
-            <td>${city[i].acreage}</td>
-            <td>${city[i].population}</td>
-            <td>${city[i].gdp}</td>
-            <td>${city[i].description}</td>
+           
             <td>${city[i].country.nameCountry}</td>
-            <td><button type="button" onclick="deleteCity(${city[i].id})" class="btn btn-danger">Delete</button></td>
-            <td><button type="button" data-toggle="modal" data-target="#myModal" onclick="showEditForm(${city[i].id})" class="btn btn-danger">Edit</button>
-            </td>
+            <td><button type="button" onclick="deleteCity(${city[i].id})" class="btn btn-danger" >Delete</button></td>
+            <td><button type="button" data-toggle="modal" data-target="#myModal" onclick="showEditForm(${city[i].id})" class="btn btn-danger">Edit</button></td>
+            <td><button type="button" onclick="showDetailForm(${city[i].id})" class="btn btn-primary" data-toggle="modal" data-target="#myModal2">Detail</button></td>
             </tr>`
             }
             $("#list-city").html(content);
@@ -24,6 +21,7 @@ function showAllCity(){
     })
 }
 showAllCity();
+
 
 function showCountry(){
     $.ajax({
@@ -155,6 +153,22 @@ function showEditForm(id){
         }
     })
     showCountry();
+}
+
+function showDetailForm(id){
+
+    $.ajax({
+        type: "GET",
+        url: `http://localhost:8080/city/${id}`,
+        success:function (city){
+            $(`#d-nameCity`).val(city.nameCity)
+            $(`#d-acreage`).val(city.acreage)
+            $(`#d-population`).val(city.population)
+            $(`#d-gdp`).val(city.gdp)
+            $(`#d-description`).val(city.description)
+            $(`#d-country`).val(city.country.nameCountry)
+        }
+    })
 }
 
 

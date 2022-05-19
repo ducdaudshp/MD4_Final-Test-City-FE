@@ -72,7 +72,7 @@
     </div>
 </div>
 <button type='submit' class="btn btn-primary" data-toggle="modal" data-target="#myModal1" >Create City</button>
-<!--    <button  type="submit" class="btn btn-primary" onclick="createCity()">Add City</button>-->
+
 
     <h1>City List</h1>
 
@@ -82,12 +82,10 @@
             <th scope="col">STT</th>
             <th scope="col">City Name</th>
             <th scope="col">Image</th>
-            <th scope="col">Acreage</th>
-            <th scope="col">Population</th>
-            <th scope="col">GDP</th>
-            <th scope="col">Description</th>
             <th scope="col">Country</th>
-            <th scope="col" colspan="2" style="text-align: center">Action</th>
+            <th scope="col">Action</th>
+            <th scope="col">Action</th>
+            <th scope="col">Action</th>
         </tr>
         </thead>
         <tbody id="list-city">
@@ -100,6 +98,59 @@
         </tbody>
     </table>
 
+
+<div id="myModal2" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Detail City</h4>
+            </div>
+
+            <div class="modal-body">
+
+                <form>
+                    <div class="mb-3">
+                        <label for="d-nameCity" class="form-label">City Name</label>
+                        <input disabled type="text" class="form-control" id="d-nameCity">
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="d-acreage" class="form-label">Acreage</label>
+                        <input disabled type="text" class="form-control" id="d-acreage">
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="d-population" class="form-label">Population</label>
+                        <input disabled type="text" class="form-control" id="d-population">
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="d-gdp" class="form-label">GDP</label>
+                        <input disabled type="text" class="form-control" id="d-gdp">
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="d-description" class="form-label">Description</label>
+                        <input disabled type="text" class="form-control" id="d-description">
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="d-country" class="form-label">Country</label>
+                        <input disabled type="text" class="form-control" id="d-country">
+                    </div>
+
+                </form>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" data-dismiss="modal" class="btn btn-danger">Close</button>
+            </div>
+
+        </div>
+    </div>
+</div>
 
 
 
