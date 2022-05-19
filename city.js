@@ -14,8 +14,8 @@ function showAllCity(){
             <td>${city[i].gdp}</td>
             <td>${city[i].description}</td>
             <td>${city[i].country.nameCountry}</td>
-            <td><button type="button" onclick="deleteCity(${city[i].id})">Delete</button></td>
-            <td><button type="button" data-toggle="modal" data-target="#myModal" onclick="showEditForm(${city[i].id})">Edit</button>
+            <td><button type="button" onclick="deleteCity(${city[i].id})" class="btn btn-danger">Delete</button></td>
+            <td><button type="button" data-toggle="modal" data-target="#myModal" onclick="showEditForm(${city[i].id})" class="btn btn-danger">Edit</button>
             </td>
             </tr>`
             }
@@ -73,7 +73,10 @@ function createCity(){
         data: cityForm,
         //ten API
         url:"http://localhost:8080/city",
-        success:showAllCity
+        success:function (){
+            alert("tao moi thanh cong");
+            showAllCity();
+        }
     });
     //chan su kien mac dinh cua the de k load lai trang
     event.preventDefault();
@@ -147,9 +150,12 @@ function showEditForm(id){
             $(`#newCountry`).val(city.country.name)
 
             $(`#showImage`).html(img)
-            let update = `<button onclick="updateCity(${city.id})" data-bs-toggle="modal" data-bs-target="#myModal">Update</button>`
+            let update = `<button onclick="updateCity(${city.id})" data-bs-toggle="modal" data-bs-target="#myModal" class="btn btn-primary">Update</button>`
             $(`#update`).html(update)
         }
     })
     showCountry();
 }
+
+
+

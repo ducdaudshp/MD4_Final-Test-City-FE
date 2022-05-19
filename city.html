@@ -13,45 +13,106 @@
     <title>City</title>
 </head>
 <body>
-<div class="container">
+<!--<div class="container">-->
 
-    <div class="mb-3">
-        <label for="nameCity" class="form-label">City Name</label>
-        <input type="text" class="form-control" id="nameCity" aria-describedby="name">
+<!--    <div class="mb-3">-->
+<!--        <label for="nameCity" class="form-label">City Name</label>-->
+<!--        <input type="text" class="form-control" id="nameCity" aria-describedby="name">-->
+<!--    </div>-->
+
+<!--    <div class="mb-3">-->
+<!--        <label for="image" class="form-label" >Image</label>-->
+<!--        <input type="file"  id="image">-->
+<!--    </div>-->
+
+<!--    <div class="mb-3">-->
+<!--        <label for="acreage" class="form-label">Acreage</label>-->
+<!--        <input type="number" class="form-control" id="acreage">-->
+<!--    </div>-->
+
+<!--    <div class="mb-3">-->
+<!--        <label for="population" class="form-label" >Population</label>-->
+<!--        <input type="number" class="form-control" id="population">-->
+<!--    </div>-->
+
+<!--    <div class="mb-3">-->
+<!--        <label for="gdp" class="form-label" >GDP</label>-->
+<!--        <input type="number" class="form-control" id="gdp">-->
+<!--    </div>-->
+
+<!--    <div class="mb-3">-->
+<!--        <label for="description" class="form-label" >Description</label>-->
+<!--        <input type="text" class="form-control" id="description">-->
+<!--    </div>-->
+
+<!--    <div class="mb-3">-->
+<!--        <label for="country" class="form-label" >Country</label>-->
+<!--        <select id="country" name="country"></select>-->
+<!--    </div>-->
+
+<div id="myModal1" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Create City</h4>
+            </div>
+
+            <div class="modal-body" id="showModal">
+            <form>
+                <div class="mb-3">
+                    <label for="nameCity" class="form-label">City Name</label>
+                    <input type="text" class="form-control" id="nameCity" aria-describedby="name">
+                </div>
+
+                <div class="mb-3">
+                    <label for="image" class="form-label" >Image</label>
+                    <input type="file"  id="image">
+                </div>
+
+                <div class="mb-3">
+                    <label for="acreage" class="form-label">Acreage</label>
+                    <input type="number" class="form-control" id="acreage">
+                </div>
+
+                <div class="mb-3">
+                    <label for="population" class="form-label" >Population</label>
+                    <input type="number" class="form-control" id="population">
+                </div>
+
+                <div class="mb-3">
+                    <label for="gdp" class="form-label" >GDP</label>
+                    <input type="number" class="form-control" id="gdp">
+                </div>
+
+                <div class="mb-3">
+                    <label for="description" class="form-label" >Description</label>
+                    <input type="text" class="form-control" id="description">
+                </div>
+
+                <div class="mb-3">
+                    <label for="country" class="form-label" >Country</label>
+                    <select id="country" name="country"></select>
+                </div>
+
+            </form>
+            </div>
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-primary" onclick="createCity()">Create</button>
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+            </div>
+<!--            <div class="modal-footer">-->
+<!--                <button type="button" data-dismiss="modal">Close</button>-->
+<!--                <div id="create"></div>-->
+<!--            </div>-->
+
+        </div>
+
     </div>
-
-    <div class="mb-3">
-        <label for="image" class="form-label" >Image</label>
-        <input type="file"  id="image">
-    </div>
-
-    <div class="mb-3">
-        <label for="acreage" class="form-label">Acreage</label>
-        <input type="number" class="form-control" id="acreage">
-    </div>
-
-    <div class="mb-3">
-        <label for="population" class="form-label" >Population</label>
-        <input type="number" class="form-control" id="population">
-    </div>
-
-    <div class="mb-3">
-        <label for="gdp" class="form-label" >GDP</label>
-        <input type="number" class="form-control" id="gdp">
-    </div>
-
-    <div class="mb-3">
-        <label for="description" class="form-label" >Description</label>
-        <input type="text" class="form-control" id="description">
-    </div>
-
-    <div class="mb-3">
-        <label for="country" class="form-label" >Country</label>
-        <select id="country" name="country"></select>
-    </div>
-
-
-    <button  type="submit" class="btn btn-primary" onclick="createCity()">Add City</button>
+</div>
+<button type='submit' class="btn btn-primary" data-toggle="modal" data-target="#myModal1" onclick="showCreateForm()">Create City</button>
+<!--    <button  type="submit" class="btn btn-primary" onclick="createCity()">Add City</button>-->
 
     <h1>City List</h1>
 
@@ -78,7 +139,7 @@
         </tr>
         </tbody>
     </table>
-</div>
+
 
 
 
@@ -129,7 +190,7 @@
 
             </form>
             <div class="modal-footer">
-                <button type="button" data-dismiss="modal">Close</button>
+                <button type="button" data-dismiss="modal" class="btn btn-danger">Close</button>
                 <div id="update"></div>
             </div>
         </div>
