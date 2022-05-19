@@ -79,6 +79,14 @@ function createCity(){
     event.preventDefault();
 }
 
+function deleteCity(id){
+    $.ajax({
+        type:"DELETE",
+        url:`http://localhost:8080/city/${id}`,
+        success:showAllCity
+    })
+}
+
 function updateCity(id){
 //lay du lieu
     let name = $(`#newNameCity`).val();
@@ -86,7 +94,7 @@ function updateCity(id){
     let acreage = $(`#newAcreage`).val();
     let population = $(`#newPopulation`).val();
     let gdp = $(`#newGdp`).val();
-    let description = $(`#newDescription`);
+    let description = $(`#newDescription`).val();
     let country = $(`#newCountry`).val();
     let cityForm = new FormData();
 
@@ -121,15 +129,10 @@ function updateCity(id){
             showAllCity();
         }
     })
+    event.preventDefault();
 }
 
-function deleteCity(id){
-    $.ajax({
-        type:"DELETE",
-        url:`http://localhost:8080/city/${id}`,
-        success:showAllCity
-    })
-}
+
 function showEditForm(id){
     $.ajax({
         type:"GET",
@@ -150,4 +153,3 @@ function showEditForm(id){
     })
     showCountry();
 }
-// $(document).ready(showAllCity())
